@@ -37,6 +37,7 @@
   ],
   "scripts": {
     "build": "bun run ./scripts/build.ts",
+    "build:declaration": "tsc --emitDeclarationOnly --project tsconfig.types.json",
     "dev": "bun run build --watch",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
@@ -45,6 +46,24 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "vue": "^3.0.0",
+    "vue-demi": "latest",
+    "y-indexeddb": "^9.0.12",
+    "y-protocols": "^1.0.6",
+    "y-webrtc": "^10.3.0",
+    "y-websocket": "^2.0.2",
+    "yjs": "^13.6.14"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.14.0",

@@ -1,9 +1,8 @@
-import dts from 'bun-plugin-dts'
-
 await Bun.build({
   entrypoints: ['./src/index.ts'],
   outdir: './dist',
-  plugins: [
-    dts(),
-  ],
+  // plugins: [
+  //   dts(),
+  // ],
+  external: ['yjs', 'vue', 'y-webrtc', 'y-websocket', 'y-indexeddb', 'y-protocols'],
 })
