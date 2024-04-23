@@ -1,21 +1,23 @@
 import type { ProviderOptions } from 'y-webrtc'
 import { WebrtcProvider } from 'y-webrtc'
 
+import type { ComputedRef, MaybeRef } from 'vue'
+import { computed, shallowRef, toValue, watch } from 'vue'
 import { useDoc, useProviders } from './../doc'
 
 export function useWebRtc(
-  room: string,
+  _room: MaybeRef<string>,
   options?: ProviderOptions,
-): WebrtcProvider {
+): ComputedRef<WebrtcProvider | undefined> {
   const doc = useDoc()
   const providers = useProviders()
-
-  const existingProvider
-    = providers.get(WebrtcProvider)?.get(room) as WebrtcProvider | undefined
+  const room = computed(() => toValue(_room))
 
   const createWebrtcProvider = () => {
+    if (!room.value)
+      return
     const provider = new WebrtcProvider(
-      room,
+      room.value,
       doc,
       options,
     )
@@ -23,12 +25,22 @@ export function useWebRtc(
     if (!(providers.has(WebrtcProvider)))
       providers.set(WebrtcProvider, new Map())
 
-    providers.get(WebrtcProvider)?.set(room, provider)
+    const old = providers.get(WebrtcProvider)?.get(room.value)
 
+    old?.destroy()
+    providers.get(WebrtcProvider)?.set(room.value, provider)
     return provider
   }
 
-  const provider = existingProvider || createWebrtcProvider()
+  const provider = shallowRef<WebrtcProvider | undefined>()
 
-  return provider
+  watch(room, (newRoom, oldRoom) => {
+    if (newRoom === oldRoom)
+      return
+    provider.value = createWebrtcProvider()
+  }, { immediate: true })
+
+  return computed(() => {
+    return provider.value
+  })
 }

@@ -1,6 +1,6 @@
 import * as Y from 'yjs'
 import type { PropType } from 'vue-demi'
-import { defineComponent, onMounted, toRefs, watchEffect } from 'vue-demi'
+import { defineComponent, onUnmounted, toRefs, watchEffect } from 'vue-demi'
 import { useDoc } from './useDoc'
 import type { Provider } from './types'
 import { provideDocumentContext } from './context'
@@ -20,7 +20,12 @@ export const DocumentProvider = defineComponent({
   },
   setup(props, ctx) {
     const { folderName, documentName, doc } = toRefs(props)
-    const superDoc = useDoc()
+    let superDoc: Y.Doc | null
+
+    try {
+      superDoc = useDoc()
+    }
+    catch {}
 
     watchEffect(() => {
       if (!superDoc)
@@ -34,7 +39,7 @@ export const DocumentProvider = defineComponent({
 
     const providers = new Map<new (...args: any[]) => Provider, Map<string, Provider>>()
 
-    onMounted(() => {
+    onUnmounted(() => {
       providers.forEach((map) => {
         map.forEach(provider => provider.destroy())
       })

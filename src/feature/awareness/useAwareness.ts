@@ -1,18 +1,17 @@
-import type { ComputedRef, ShallowRef } from 'vue-demi'
-import { computed, onMounted, onUnmounted, shallowRef } from 'vue-demi'
+import type { MaybeRef, ShallowRef } from 'vue-demi'
+import { computed, onMounted, onUnmounted, shallowRef, toValue } from 'vue-demi'
 import type { Awareness } from 'y-protocols/awareness'
 
-export function useAwareness<T extends NonNullable<unknown> = { [x: string]: any }>(awareness: Awareness): {
-  states: ComputedRef<Map<number, T>>
-  localID: number
-  localState: ComputedRef<T>
-  setLocalState: (nextState: T) => void
-} {
+export function useAwareness<T extends NonNullable<unknown> = { [x: string]: any }>(_awareness: MaybeRef<Awareness | undefined>) {
   const states = shallowRef(new Map<number, T>())
   const localState: ShallowRef<T> = shallowRef({} as T)
+  const awareness = computed(() => toValue(_awareness))
 
   const setLocalState = (nextState: T) => {
-    awareness.setLocalState(
+    if (!awareness.value)
+      return
+    // states.value.set(awareness.value.clientID, nextState)
+    awareness.value.setLocalState(
       nextState,
     )
 
@@ -20,20 +19,24 @@ export function useAwareness<T extends NonNullable<unknown> = { [x: string]: any
   }
 
   const forceUpdateOnAwarenessChange = () => {
-    states.value = awareness.getLocalState() as Map<number, T>
+    if (!awareness.value)
+      return
+    states.value = new Map(
+      Array.from(awareness.value.getStates()).map(([clientID, state]) => [clientID, state as T]),
+    ) as Map<number, T>
   }
 
   onMounted(() => {
-    awareness.on('change', forceUpdateOnAwarenessChange)
+    awareness.value?.on('change', forceUpdateOnAwarenessChange)
   })
 
   onUnmounted(() => {
-    awareness.off('change', forceUpdateOnAwarenessChange)
+    awareness.value?.off('change', forceUpdateOnAwarenessChange)
   })
 
   return {
     states: computed(() => states.value),
-    localID: awareness.clientID,
+    localID: computed(() => awareness.value?.clientID),
     localState: computed(() => localState.value),
     setLocalState,
   }

@@ -1,18 +1,18 @@
-import type { ComputedRef } from 'vue-demi'
+import type { ComputedRef, ShallowRef } from 'vue-demi'
 import { computed, onUnmounted, shallowRef } from 'vue-demi'
 import * as Y from 'yjs'
 import { useSharedType } from './useSharedType'
 
 export function useMap<T = any>(name: string): {
   state: ComputedRef<{
-    [x: string]: any
+    [x: string]: T
   }>
-  get: (name: string) => T | undefined
+  get: ComputedRef<(name: string) => T | undefined>
   set: (name: string, value: T) => void
 } {
   const map = useSharedType<Y.Map<T>>(name, Y.Map)
 
-  const state = shallowRef(map.toJSON())
+  const state: ShallowRef<{ [x: string]: T }> = shallowRef(map.toJSON())
 
   const mapObserver = () => {
     state.value = map.toJSON()
@@ -25,7 +25,7 @@ export function useMap<T = any>(name: string): {
 
   return {
     state: computed(() => state.value),
-    get: (name: string) => map.get(name),
+    get: computed(() => (name: string) => state.value[name] as T | undefined),
     set: (name: string, value: T) => {
       map.set(name, value)
     },

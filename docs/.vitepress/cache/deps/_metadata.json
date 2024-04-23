@@ -1,0 +1,76 @@
+{
+  "hash": "f81aa72f",
+  "configHash": "b9670056",
+  "lockfileHash": "72979629",
+  "browserHash": "6fc61846",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "fdb9bd5a",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "e14c69c8",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../../node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "420d2b2b",
+      "needsInterop": false
+    },
+    "@theme/index": {
+      "src": "../../../../node_modules/vitepress/dist/client/theme-default/index.js",
+      "file": "@theme_index.js",
+      "fileHash": "05c0ddc6",
+      "needsInterop": false
+    },
+    "yjs": {
+      "src": "../../../../node_modules/yjs/dist/yjs.mjs",
+      "file": "yjs.js",
+      "fileHash": "6d2cda98",
+      "needsInterop": false
+    },
+    "vue-demi": {
+      "src": "../../../../node_modules/vitepress/lib/vue-demi.mjs",
+      "file": "vue-demi.js",
+      "fileHash": "adc01c85",
+      "needsInterop": false
+    },
+    "y-webrtc": {
+      "src": "../../../../node_modules/y-webrtc/src/y-webrtc.js",
+      "file": "y-webrtc.js",
+      "fileHash": "c7180fb9",
+      "needsInterop": false
+    },
+    "y-websocket": {
+      "src": "../../../../node_modules/y-websocket/src/y-websocket.js",
+      "file": "y-websocket.js",
+      "fileHash": "864cb93a",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-JB6YBN24": {
+      "file": "chunk-JB6YBN24.js"
+    },
+    "chunk-XVGPAPKA": {
+      "file": "chunk-XVGPAPKA.js"
+    },
+    "chunk-GOGWXKNJ": {
+      "file": "chunk-GOGWXKNJ.js"
+    },
+    "chunk-ZDT2FX2F": {
+      "file": "chunk-ZDT2FX2F.js"
+    },
+    "chunk-ZKDF2PYL": {
+      "file": "chunk-ZKDF2PYL.js"
+    },
+    "chunk-3EJPJMEH": {
+      "file": "chunk-3EJPJMEH.js"
+    }
+  }
+}
