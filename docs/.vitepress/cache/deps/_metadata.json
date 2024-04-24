@@ -1,55 +1,55 @@
 {
-  "hash": "c12bbaff",
+  "hash": "cc84a5be",
   "configHash": "b9670056",
-  "lockfileHash": "410cbe9a",
-  "browserHash": "3f128024",
+  "lockfileHash": "9c0a5cb9",
+  "browserHash": "13abee71",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "1d87ab80",
+      "fileHash": "6d50172a",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "a4200f62",
+      "fileHash": "9157e6c3",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "03877618",
+      "fileHash": "05fb4c6a",
       "needsInterop": false
     },
     "@theme/index": {
       "src": "../../../../node_modules/vitepress/dist/client/theme-default/index.js",
       "file": "@theme_index.js",
-      "fileHash": "730de0c3",
+      "fileHash": "de9f62ec",
       "needsInterop": false
     },
     "yjs": {
       "src": "../../../../node_modules/yjs/dist/yjs.mjs",
       "file": "yjs.js",
-      "fileHash": "53718da4",
-      "needsInterop": false
-    },
-    "y-webrtc": {
-      "src": "../../../../node_modules/y-webrtc/src/y-webrtc.js",
-      "file": "y-webrtc.js",
-      "fileHash": "3feeb451",
+      "fileHash": "faaf7512",
       "needsInterop": false
     },
     "vue-demi": {
       "src": "../../../../node_modules/vitepress/lib/vue-demi.mjs",
       "file": "vue-demi.js",
-      "fileHash": "ca0aa050",
+      "fileHash": "e3419bc9",
+      "needsInterop": false
+    },
+    "y-webrtc": {
+      "src": "../../../../node_modules/y-webrtc/src/y-webrtc.js",
+      "file": "y-webrtc.js",
+      "fileHash": "6be1a6d2",
       "needsInterop": false
     },
     "y-websocket": {
       "src": "../../../../node_modules/y-websocket/src/y-websocket.js",
       "file": "y-websocket.js",
-      "fileHash": "f586c040",
+      "fileHash": "1fc4f8da",
       "needsInterop": false
     }
   },

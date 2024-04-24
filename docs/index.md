@@ -4,15 +4,15 @@ layout: home
 
 hero:
   name: "yjs-vue"
-  text: "A VitePress Site"
+  text: "Vue bindings for Yjs."
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Examples
+      link: /examples/
     - theme: alt
       text: API Examples
-      link: /api-examples
+      link: /api/
 
 features:
   - title: Feature A
