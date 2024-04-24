@@ -10,7 +10,6 @@ export function useAwareness<T extends NonNullable<unknown> = { [x: string]: any
   const setLocalState = (nextState: T) => {
     if (!awareness.value)
       return
-    // states.value.set(awareness.value.clientID, nextState)
     awareness.value.setLocalState(
       nextState,
     )
