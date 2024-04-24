@@ -9,3 +9,10 @@ lib-cov
 logs
 node_modules
 temp
+
+.vitepress/cache
+.vitepress/dist
+
+docs/.vitepress/cache
+docs/.vitepress/dist
+

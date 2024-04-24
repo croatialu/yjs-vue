@@ -1,5 +1,5 @@
 {
-  "name": "pkg-placeholder",
+  "name": "yjs-vue",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "bun@1.1.2",
@@ -7,12 +7,12 @@
   "author": "Croatia Lu <wuli.croatia@foxmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/croatialu",
-  "homepage": "https://github.com/croatialu/pkg-placeholder#readme",
+  "homepage": "https://github.com/croatialu/yjs-vue#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/croatialu/pkg-placeholder.git"
+    "url": "git+https://github.com/croatialu/yjs-vue.git"
   },
-  "bugs": "https://github.com/croatialu/pkg-placeholder/issues",
+  "bugs": "https://github.com/croatialu/yjs-vue/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {

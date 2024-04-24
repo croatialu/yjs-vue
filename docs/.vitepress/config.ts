@@ -4,19 +4,20 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'yjs-vue',
   description: 'A VitePress Site',
+  base: '/yjs-vue',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
+      { text: 'Examples', link: '/example/index' },
     ],
 
     sidebar: [
       {
         text: 'Examples',
         items: [
-          { text: 'hello', link: '/hello' },
-          { text: 'cursor', link: '/cursor' },
+          { text: 'hello', link: '/examples/hello' },
+          { text: 'cursor', link: '/examples/cursor' },
         ],
       },
     ],
