@@ -5,8 +5,7 @@ permissions:
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [master, staging]
 
 jobs:
   release:
@@ -19,6 +18,14 @@ jobs:
       - name: Use bun
         uses: oven-sh/setup-bun@v1
 
-      - run: npx changelogithub
+      - name: Install
+        run: bun install
+
+      - name: Build
+        run: bun run build
+
+      - name: Release
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: bunx semantic-release

@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "packageManager": "bun@1.1.2",
-  "description": "_description_",
+  "description": "Vue bindings for Yjs.",
   "author": "Croatia Lu <wuli.croatia@foxmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/croatialu",
@@ -13,7 +13,21 @@
     "url": "git+https://github.com/croatialu/yjs-vue.git"
   },
   "bugs": "https://github.com/croatialu/yjs-vue/issues",
-  "keywords": [],
+  "keywords": [
+    "vue",
+    "composable",
+    "yjs",
+    "state-management",
+    "peer-to-peer",
+    "p2p",
+    "distributed",
+    "local-first",
+    "offline-first",
+    "crdt",
+    "decentralized",
+    "shared-editing",
+    "realtime"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
@@ -36,7 +50,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "bun run ./scripts/build.ts",
+    "build": "bun run ./scripts/build.ts && bun run build:declaration",
     "build:declaration": "tsc --emitDeclarationOnly --project tsconfig.types.json",
     "dev": "bun run build --watch",
     "lint": "eslint .",
@@ -72,6 +86,7 @@
     "@antfu/eslint-config": "^2.14.0",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.7",
+    "@semantic-release/git": "^10.0.1",
     "@types/bun": "^1.1.0",
     "@types/node": "^20.12.7",
     "bumpp": "^9.4.0",
@@ -80,6 +95,7 @@
     "esno": "^4.7.0",
     "lint-staged": "^15.2.2",
     "rimraf": "^5.0.5",
+    "semantic-release": "^23.0.8",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.4.5",
     "unbuild": "^2.0.0",
@@ -92,5 +108,36 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      {
+        "name": "main"
+      },
+      {
+        "name": "staging",
+        "channel": "rc",
+        "prerelease": "rc"
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
+    ]
   }
 }
