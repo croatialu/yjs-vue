@@ -87,17 +87,14 @@
     "@antfu/eslint-config": "^2.14.0",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.7",
-    "@semantic-release/git": "^10.0.1",
     "@types/bun": "^1.1.0",
     "@types/node": "^20.12.7",
     "bumpp": "^9.4.0",
     "bun-plugin-dts": "^0.2.3",
     "eslint": "^9.0.0",
-    "esno": "^4.7.0",
     "gitmoji-cli": "^9.2.0",
     "lint-staged": "^15.2.2",
     "rimraf": "^5.0.5",
-    "semantic-release": "^23.0.8",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.4.5",
     "unbuild": "^2.0.0",
@@ -114,46 +111,5 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
-  },
-  "release": {
-    "branches": [
-      {
-        "name": "main"
-      },
-      {
-        "name": "staging",
-        "channel": "rc",
-        "prerelease": "rc"
-      }
-    ],
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "releaseRules": [
-            { "breaking": true, "release": "major" },
-            { "revert": true, "release": "patch" },
-            { "type": "feat", "release": "minor" },
-            { "type": "fix", "release": "patch" },
-            { "type": "perf", "release": "patch" },
-            { "type": "docs", "release": "patch" },
-            { "type": "ci", "release": "patch" },
-            { "type": "chore", "release": "patch" },
-            { "type": "chore", "scope": "release", "release": false },
-            { "tag": "Breaking", "release": "major" },
-            { "tag": "Fix", "release": "patch" },
-            { "tag": "Update", "release": "minor" },
-            { "tag": "New", "release": "minor" }
-          ],
-          "parserOpts": {
-            "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"]
-          }
-        }
-      ],
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/npm",
-      "@semantic-release/github"
-    ]
   }
 }
