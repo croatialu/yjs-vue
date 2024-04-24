@@ -9,16 +9,10 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/example/' },
+      { text: 'Examples', link: '/example/index' },
     ],
 
     sidebar: [
-      {
-        text: 'API',
-        items: [
-          { text: 'useMap', link: '/api/useMap' },
-        ],
-      },
       {
         text: 'Examples',
         items: [
@@ -29,7 +23,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/croatialu/yjs-vue' },
+      { icon: 'github', link: 'https://github.com/croatialu' },
     ],
   },
 })
