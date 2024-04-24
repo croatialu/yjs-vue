@@ -59,7 +59,7 @@
     "start": "bun run --watch ./src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks",
+    "prepare": "simple-git-hooks && gitmoji init",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
@@ -86,6 +86,7 @@
     "@antfu/eslint-config": "^2.14.0",
     "@antfu/ni": "^0.21.12",
     "@antfu/utils": "^0.7.7",
+    "@lobehub/lint": "^1.23.3",
     "@semantic-release/git": "^10.0.1",
     "@types/bun": "^1.1.0",
     "@types/node": "^20.12.7",
@@ -93,6 +94,7 @@
     "bun-plugin-dts": "^0.2.3",
     "eslint": "^9.0.0",
     "esno": "^4.7.0",
+    "gitmoji-cli": "^9.2.0",
     "lint-staged": "^15.2.2",
     "rimraf": "^5.0.5",
     "semantic-release": "^23.0.8",
@@ -139,7 +141,6 @@
             { "type": "ci", "release": "patch" },
             { "type": "chore", "release": "patch" },
             { "type": "chore", "scope": "release", "release": false },
-
             { "tag": "Breaking", "release": "major" },
             { "tag": "Fix", "release": "patch" },
             { "tag": "Update", "release": "minor" },
