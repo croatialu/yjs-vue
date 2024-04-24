@@ -6,15 +6,13 @@ import { isUpdater } from './utils'
 
 const MAP_KEY = 'YJS_VUE___RECORD'
 
-export function useRecord<T>(name: string): [ComputedRef<T | undefined>, (value: Updater<T | undefined>) => void]
-export function useRecord<T>(name: string, defaultValue: T): [ComputedRef<T>, (value: Updater<T>) => void]
-export function useRecord<T>(name: string, defaultValue?: T): [ComputedRef<T | undefined>, (value: Updater<T | undefined>) => void] {
+export function useRecord<T>(name: string): [ComputedRef<T | undefined>, (value: Updater<T | undefined>) => void] {
   const [map, setMap] = useMap(MAP_KEY)
 
-  setRecord(defaultValue as any)
+  // setRecord(defaultValue as any)
 
   const record = computed(() => {
-    return (map.value[name] || defaultValue) as T | undefined
+    return map.value[name] as T | undefined
   })
 
   function setRecord(value: Updater<T>) {
