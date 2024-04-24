@@ -55,7 +55,7 @@
     "dev": "bun run build --watch",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
-    "release": "bumpp && npm publish",
+    "release": "semantic-release",
     "start": "bun run --watch ./src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
