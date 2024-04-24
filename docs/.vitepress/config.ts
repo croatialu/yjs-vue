@@ -17,6 +17,7 @@ export default defineConfig({
         text: 'API',
         items: [
           { text: 'useMap', link: '/api/useMap' },
+          { text: 'useArray', link: '/api/useArray' },
           { text: 'useWebRtc', link: '/api/useWebRtc' },
         ],
       },

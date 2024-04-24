@@ -7,5 +7,5 @@ outline: deep
 ``` ts
 import { useMap } from 'yjs-vue'
 
-const { state, get, set } = useMap('userMap')
+const { states, get, set } = useMap('userMap')
 ```
