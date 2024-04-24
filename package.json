@@ -1,7 +1,7 @@
 {
   "name": "yjs-vue",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1-beta.1",
   "packageManager": "bun@1.1.2",
   "description": "Vue bindings for Yjs.",
   "author": "Croatia Lu <wuli.croatia@foxmail.com>",
