@@ -6,7 +6,7 @@ import { computed, shallowRef, toValue, watch } from 'vue-demi'
 import { useDoc, useProviders } from './../doc'
 
 export function useWebRtc(
-  _room: MaybeRef<string>,
+  _room: MaybeRef<string | undefined>,
   options?: ProviderOptions,
 ): ComputedRef<WebrtcProvider | undefined> {
   const doc = useDoc()

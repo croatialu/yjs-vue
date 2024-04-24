@@ -19,6 +19,9 @@ export function useWebSocket(url: string, room: string): WebsocketProvider {
     if (!(providers.has(WebsocketProvider)))
       providers.set(WebsocketProvider, new Map())
 
+    const old = providers.get(WebsocketProvider)?.get(room)
+    old?.destroy()
+
     providers.get(WebsocketProvider)?.set(room, provider)
 
     return provider

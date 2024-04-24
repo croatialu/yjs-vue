@@ -7,13 +7,10 @@ permissions:
 
 on:
   push:
-    branches:
-      - main
-      - alpha
-      - beta
-      - rc
-jobs:
+    tags:
+      - 'v*'
 
+jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
@@ -23,11 +20,6 @@ jobs:
       - name: Install bun
         uses: oven-sh/setup-bun@v1
 
-      - name: Install NodeJS
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
       - name: Install deps
         run: bun i
 
@@ -35,7 +27,10 @@ jobs:
         run: bun run build
 
       - name: Release
-        run: bun run release
+        run: npm publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
