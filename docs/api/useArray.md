@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# useMap
+# useArray
 
 ``` ts
 import { useArray } from 'yjs-vue'
