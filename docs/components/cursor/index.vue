@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useAwareness, useMap, useWebRtc } from '../../../src'
+import { useAwareness, useWebRtc } from '../../../src'
 
 const provider = useWebRtc('counter-example-yjs-vue-cursor', {
   signaling: ['wss://yjs-server.cccboy.com'],
@@ -18,22 +18,12 @@ const users = computed(() => {
     }))
 })
 
-const { get, set } = useMap<{ count: number }>('state')
-
-const record = computed(() => get.value('count'))
-
 window.addEventListener('pointermove', (e) => {
   setLocalState({
     x: e.clientX,
     y: e.clientY,
   })
 })
-
-function incre() {
-  set('count', {
-    count: (record.value?.count || 0) + 1,
-  })
-}
 </script>
 
 <template>
@@ -56,10 +46,5 @@ function incre() {
     >
       <circle v-for="item in users" :key="item.clientID" :cx="item.x" :cy="item.y" :r="5" />
     </svg>
-    {{ record?.count }}
-
-    <button @click="incre">
-      +1
-    </button>
   </div>
 </template>

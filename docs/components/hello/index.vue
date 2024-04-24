@@ -1,28 +1,22 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useMap, useWebRtc } from '../../../src'
+import { useRecord, useWebRtc } from '../../../src'
 
 useWebRtc('counter-example-yjs-vue-hello', {
   signaling: ['wss://yjs-server.cccboy.com'],
 })
 
-const { get, set } = useMap<{ count: number }>('state')
-
-const record = computed(() => get.value('count'))
-
-function incre() {
-  set('count', {
-    count: (record.value?.count || 0) + 1,
-  })
-}
+const [name, setName] = useRecord('SHARED_NAME', '')
 </script>
 
 <template>
   <div>
-    {{ record?.count }}
-
-    <button @click="incre">
-      +1
-    </button>
+    <input
+      style="border: 1px solid black"
+      :value="name" placeholder="please enter" @input="event => {
+        const el = event.target as HTMLInputElement
+        setName(el.value)
+      }"
+    >
+    <p>Hello, {{ name }}</p>
   </div>
 </template>

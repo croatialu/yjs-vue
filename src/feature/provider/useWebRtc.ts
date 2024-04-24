@@ -1,8 +1,8 @@
 import type { ProviderOptions } from 'y-webrtc'
 import { WebrtcProvider } from 'y-webrtc'
 
-import type { ComputedRef, MaybeRef } from 'vue'
-import { computed, shallowRef, toValue, watch } from 'vue'
+import type { ComputedRef, MaybeRef } from 'vue-demi'
+import { computed, shallowRef, toValue, watch } from 'vue-demi'
 import { useDoc, useProviders } from './../doc'
 
 export function useWebRtc(

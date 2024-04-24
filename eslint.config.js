@@ -5,6 +5,8 @@ export default antfu(
   {
     ignores: [
       // eslint ignore globs here
+      'docs/.vitepress/dist',
+      'docs/.vitepress/cache',
     ],
   },
   {

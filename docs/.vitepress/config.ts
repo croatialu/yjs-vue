@@ -26,6 +26,7 @@ export default defineConfig({
         items: [
           { text: 'hello', link: '/examples/hello' },
           { text: 'cursor', link: '/examples/cursor' },
+          { text: 'simple-list', link: '/examples/simple-list' },
         ],
       },
     ],

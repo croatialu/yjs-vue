@@ -1,33 +1,38 @@
-import type { ComputedRef, ShallowRef } from 'vue-demi'
-import { computed, onUnmounted, shallowRef } from 'vue-demi'
+import { computed, onUnmounted, watch } from 'vue-demi'
 import * as Y from 'yjs'
+import { useDoc } from '../doc'
+import { patchSharedType } from '../patch'
 import { useSharedType } from './useSharedType'
+import { useImmer } from './useImmer'
+import { deepClone } from './utils'
 
-export function useMap<T = any>(name: string): {
-  state: ComputedRef<{
-    [x: string]: T
-  }>
-  get: ComputedRef<(name: string) => T | undefined>
-  set: (name: string, value: T) => void
-} {
+export function useMap<T = any>(name: string) {
+  const doc = useDoc()
   const map = useSharedType<Y.Map<T>>(name, Y.Map)
 
-  const state: ShallowRef<{ [x: string]: T }> = shallowRef(map.toJSON())
+  const [state, updateState] = useImmer<{
+    [x: string]: T | undefined
+  }>(map.toJSON())
+
+  watch(state, (v) => {
+    doc.transact(() => {
+      patchSharedType(
+        map,
+        v,
+      )
+    })
+  })
 
   const mapObserver = () => {
-    state.value = map.toJSON()
+    updateState(
+      deepClone(map.toJSON()),
+    )
   }
-  map.observe(mapObserver)
 
+  map.observeDeep(mapObserver)
   onUnmounted(() => {
     map.unobserve(mapObserver)
   })
 
-  return {
-    state: computed(() => state.value),
-    get: computed(() => (name: string) => state.value[name] as T | undefined),
-    set: (name: string, value: T) => {
-      map.set(name, value)
-    },
-  }
+  return [computed(() => state.value), updateState] as const
 }

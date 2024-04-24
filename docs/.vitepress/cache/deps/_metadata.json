@@ -1,55 +1,61 @@
 {
-  "hash": "cc84a5be",
+  "hash": "b9d48cea",
   "configHash": "b9670056",
-  "lockfileHash": "9c0a5cb9",
-  "browserHash": "13abee71",
+  "lockfileHash": "03eb8932",
+  "browserHash": "7bd45b07",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "6d50172a",
+      "fileHash": "a28a9e68",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "9157e6c3",
+      "fileHash": "6a1e744c",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "05fb4c6a",
+      "fileHash": "8634cf82",
       "needsInterop": false
     },
     "@theme/index": {
       "src": "../../../../node_modules/vitepress/dist/client/theme-default/index.js",
       "file": "@theme_index.js",
-      "fileHash": "de9f62ec",
+      "fileHash": "de52a521",
       "needsInterop": false
     },
     "yjs": {
       "src": "../../../../node_modules/yjs/dist/yjs.mjs",
       "file": "yjs.js",
-      "fileHash": "faaf7512",
-      "needsInterop": false
-    },
-    "vue-demi": {
-      "src": "../../../../node_modules/vitepress/lib/vue-demi.mjs",
-      "file": "vue-demi.js",
-      "fileHash": "e3419bc9",
+      "fileHash": "9121479d",
       "needsInterop": false
     },
     "y-webrtc": {
       "src": "../../../../node_modules/y-webrtc/src/y-webrtc.js",
       "file": "y-webrtc.js",
-      "fileHash": "6be1a6d2",
+      "fileHash": "92818d14",
       "needsInterop": false
     },
     "y-websocket": {
       "src": "../../../../node_modules/y-websocket/src/y-websocket.js",
       "file": "y-websocket.js",
-      "fileHash": "1fc4f8da",
+      "fileHash": "e2ed6751",
+      "needsInterop": false
+    },
+    "vue-demi": {
+      "src": "../../../../node_modules/vitepress/lib/vue-demi.mjs",
+      "file": "vue-demi.js",
+      "fileHash": "9fcf828d",
+      "needsInterop": false
+    },
+    "immer": {
+      "src": "../../../../node_modules/immer/dist/immer.mjs",
+      "file": "immer.js",
+      "fileHash": "c4c30bcf",
       "needsInterop": false
     }
   },

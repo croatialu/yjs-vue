@@ -74,6 +74,7 @@
     }
   },
   "dependencies": {
+    "immer": "^10.0.4",
     "vue": "^3.0.0",
     "vue-demi": "latest",
     "y-indexeddb": "^9.0.12",

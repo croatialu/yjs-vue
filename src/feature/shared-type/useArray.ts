@@ -1,37 +1,39 @@
 import * as Y from 'yjs'
-import { onUnmounted, shallowRef } from 'vue-demi'
+import { computed, onUnmounted, watch } from 'vue-demi'
+import { patchSharedType, patchState } from '../patch'
+import { useDoc } from '../doc'
 import { useSharedType } from './useSharedType'
+import { useImmer } from './useImmer'
+import { deepClone } from './utils'
 
-export function useArray<T = any>(name: string): {
-  state: T[]
-  get: (index: number) => T | undefined
-  insert: (index: number, content: T[]) => void
-  delete: (index: number, length: number) => void
-  push: (content: T[]) => void
-  unshift: (content: T[]) => void
-  slice: (start: number, end?: number) => void
-} {
+export function useArray<T = any>(name: string) {
+  const doc = useDoc()
   const array = useSharedType<Y.Array<T>>(name, Y.Array)
 
-  const state = shallowRef(array.toJSON())
+  const [state, setState] = useImmer<T[]>([])
 
   const arrayObserver = () => {
-    state.value = array.toJSON()
+    const result = patchState(
+      deepClone(state.value),
+      array.toJSON(),
+    )
+    setState(result)
   }
 
-  array.observe(arrayObserver)
+  watch(state, (v) => {
+    doc.transact(() => {
+      patchSharedType(
+        array,
+        v,
+      )
+    })
+  })
+
+  array.observeDeep(arrayObserver)
 
   onUnmounted(() => {
     array.unobserve(arrayObserver)
   })
 
-  return {
-    state: array.toJSON(),
-    get: (index: number) => array.get(index),
-    insert: (index: number, content: T[]) => array.insert(index, content),
-    delete: (index: number, length: number) => array.delete(index, length),
-    push: (content: T[]) => array.push(content),
-    unshift: (content: T[]) => array.unshift(content),
-    slice: (start: number, end?: number) => array.slice(start, end),
-  }
+  return [computed(() => state.value), setState] as const
 }
